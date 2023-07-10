@@ -44,8 +44,9 @@ st.set_page_config(page_title="Home", layout="wide")
 st.markdown("""<style>.reportview-container .main .block-container {max-width: 95%;}</style>""", unsafe_allow_html=True)
 
 # --------------------- HOME PAGE -------------------- #
-st.title("GOOGLE VERTEX LANGCHAIN AGENT")
-st.write("""The all new power of Google Vertex AI""")
+st.title("GOOGLE VERTEX AI LANGCHAIN AGENT")
+st.write("""This VERTEX AI Agent reads year selected research papers and tells you everything you need to knwo. Scan 
+the knowledge of Google Scholar in seconds!""")
 st.write("Let's start interacting with Vertex AI")
 
 

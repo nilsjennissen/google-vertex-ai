@@ -157,7 +157,7 @@ def organic_results(search_word, start_year, end_year, num_pages):
     dt_string = now.strftime("%Y-%m-%d_%H-%M-%S")
 
     # save to csv
-    df.to_csv(f'papers/scholar_results_{dt_string}.csv', index=False)
+    df.to_csv(f'searches/scholar_results_{dt_string}.csv', index=False)
 
     return df
 
@@ -175,7 +175,7 @@ def download_file(url):
     st.write(f"Downloading file {file_name}..")
 
     # Open the file and write the content into the file
-    with open(os.path.join('papers/', file_name), 'wb') as file:
+    with open(os.path.join('../papers/', file_name), 'wb') as file:
         for chunk in response.iter_content(chunk_size=1024):
             file.write(chunk)
 
@@ -200,8 +200,11 @@ if search_button:
     df = organic_results(search_words, start_year, end_year, num_pages)
     # Save the DataFrame in the session state
     st.session_state.df = df
-    st.dataframe(df)
 
+    # Check if 'df' exists in the session state
+    if 'df' in st.session_state:
+        # Use the DataFrame from the session state
+        st.dataframe(st.session_state.df)
 
 with st.form(key='select_form'):
     # Check if 'df' exists in the session state
@@ -209,8 +212,8 @@ with st.form(key='select_form'):
         # Use the DataFrame from the session state
         df = st.session_state.df
 
-        # Filter the DataFrame to only include rows with PDF links
-        df_with_pdfs = df[df['file_link'].notna()]
+        # Filter the DataFrame to only include rows with PDF links and file_format == 'PDF'
+        df_with_pdfs = df[df['file_link'].notnull() & (df['file_format'] == 'PDF')]
 
         # Store the selected papers and their URLs in the session state
         selected_papers = st.multiselect('Select papers', df_with_pdfs['title'].tolist(), key='selected_papers')
@@ -221,9 +224,13 @@ with st.form(key='select_form'):
 
 # Update the session state with the selected papers
 if select_button:
-    st.write('Selected papers:', selected_papers)
+    # Display each selected paper with the header in bold and the summary in normal text
+    for paper in selected_papers:
+        paper_summary = df_with_pdfs[df_with_pdfs['title'] == paper]['publication_info_summary'].values[0]
+        st.subheader(f'**{paper}**')
+        st.write(paper_summary)
 
-download_button = st.button(label='Download papers')
+download_button = st.button(label='Download selected papers')
 
 # Check if the download button is pressed
 if download_button:
@@ -234,65 +241,12 @@ if download_button:
             download_file(url)
 
 
+
+
 # ----------------- SIDE BAR SETTINGS ---------------- #
 st.sidebar.subheader("Settings:")
 tts_enabled = st.sidebar.checkbox("Enable Text-to-Speech", value=False)
 
-# ------------------ FILE UPLOADER ------------------- #
-st.sidebar.subheader("File Uploader:")
-uploaded_files = st.sidebar.file_uploader("Choose files", type=["csv", "html", "css", "py", "pdf", "ipynb"],
-                                          accept_multiple_files=True)
-st.sidebar.metric("Number of files uploaded", len(uploaded_files))
-st.sidebar.color_picker("Pick a color for the answer space", "#C14531")
-
-# Initialize docsearch as None
-docsearch = None
-
-# --------------------- USER INPUT --------------------- #
-user_input = st.text_area("")
-# If record button is pressed, rec_streamlit records and the output is saved
-audio_bytes = rec_streamlit()
 
 
-# ------------------- TRANSCRIPTION -------------------- #
-if audio_bytes or user_input:
-
-    if audio_bytes:
-        try:
-            with open("audio.wav", "wb") as file:
-                file.write(audio_bytes)
-        except Exception as e:
-            st.write("Error recording audio:", e)
-        transcript = get_transcript_whisper("audio.wav")
-    else:
-        transcript = user_input
-
-    st.write("**Recognized:**")
-    st.write(transcript)
-
-    if any(word in transcript for word in ["abort recording"]):
-        st.write("... Script stopped by user")
-        exit()
-
-    # ----------------------- ANSWER ----------------------- #
-    with st.spinner("Fetching answer ..."):
-        time.sleep(6)
-
-        llm = VertexAI()
-
-        # Text Splitter
-        text_splitter = CharacterTextSplitter(chunk_size=100, chunk_overlap=50)
-        #chunks = text_splitter.split_text(text)
-        #knowledge_base = FAISS.from_texts(chunks, embeddings)
-
-        # Use the PDF agent to answer the question
-        #docs = knowledge_base.similarity_search(transcript)
-        # Show the amount of chunks found
-        #st.write(f"Found {len(docs)} chunks.")
-
-        #chain = load_qa_chain(llm, chain_type="stuff")
-        #answer = chain.run(input_documents=docs, question=transcript)
-        #st.write("**AI Response:**", answer)
-        #speak_answer(answer, tts_enabled)
-        #st.success("**Interaction finished**")
 
