@@ -1,0 +1,9 @@
+streamlit~=1.24.1
+requests~=2.31.0
+vertexai~=0.0.1
+langchain~=0.0.190
+pypdf2~=2.11.1
+pandas~=2.0.3
+numpy~=1.25.1
+matplotlib~=3.7.2
+ipython~=8.14.0
