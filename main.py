@@ -8,7 +8,6 @@ import pandas as pd
 import numpy as np
 import credentials
 import os
-from audio_recorder_streamlit import audio_recorder
 import openai
 from gtts import gTTS
 import io
