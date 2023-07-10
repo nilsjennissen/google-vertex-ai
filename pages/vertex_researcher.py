@@ -7,6 +7,7 @@ import pandas as pd
 from datetime import datetime
 import streamlit as st
 import requests
+from credentials import OPENAI_API_KEY, project_id
 
 from langchain.embeddings import VertexAIEmbeddings
 from langchain.llms import VertexAI
@@ -40,7 +41,7 @@ current_directory = os.path.dirname(os.path.abspath(__file__))
 
 #%% ----------------------------------------  VERTEXAI PRELOADS -----------------------------------------------------#
 # Initialise the vertexai environment
-vertexai.init(project="ghc-016", location="us-central1")
+vertexai.init(project=project_id, location="us-central1")
 embeddings = VertexAIEmbeddings()
 
 # Initialise the vertexai environment

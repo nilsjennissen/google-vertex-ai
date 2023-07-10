@@ -4,7 +4,7 @@ This is the file for the google_vertex_agent
 
 #%% ---------------------------------------------  IMPORTS  ----------------------------------------------------------#
 import streamlit as st
-from credentials import OPENAI_API_KEY
+from credentials import OPENAI_API_KEY, project_id
 
 from main import rec_streamlit, speak_answer, get_transcript_whisper, get_transcript_google
 
@@ -22,7 +22,7 @@ from vertexai.preview.language_models import ChatModel
 #%% -----------------------------------------  GOOGLE VERTEX AI ------------------------------------------------------#
 
 # Initialise the vertexai environment
-vertexai.init(project="ghc-016", location="us-central1")
+vertexai.init(project=project_id, location="us-central1")
 
 # Initialise the chat model
 model = ChatModel.from_pretrained("chat-bison@001")

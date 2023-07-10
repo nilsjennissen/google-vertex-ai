@@ -4,7 +4,7 @@ This is the file for the Vertex AI Agent
 
 #%% ---------------------------------------------  IMPORTS  ----------------------------------------------------------#
 import streamlit as st
-from credentials import OPENAI_API_KEY
+from credentials import OPENAI_API_KEY, project_id
 from vertexai.preview.language_models import TextGenerationModel
 import tempfile
 import os
@@ -31,7 +31,7 @@ from langchain.vectorstores import FAISS
 embeddings = VertexAIEmbeddings()
 
 # Initialise the vertexai environment
-vertexai.init(project="ghc-016", location="us-central1")
+vertexai.init(project=project_id, location="us-central1")
 
 # Initialise the chat model
 model = ChatModel.from_pretrained("chat-bison@001")
