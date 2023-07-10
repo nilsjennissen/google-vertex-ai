@@ -171,9 +171,8 @@ def download_file(url):
     file_name = url.split('/')[-1]
 
     # Add the .pdf extension to the file name
-    file_name = f"{file_name}.pdf"
 
-    st.write(f"Downloading file {file_name}..")
+    st.write(f"Downloading file {file_name}.pdf")
 
     # Open the file and write the content into the file
     with open(os.path.join('../papers/', file_name), 'wb') as file:

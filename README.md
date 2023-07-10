@@ -55,3 +55,36 @@ This project provides a powerful tool for researchers, enabling them to easily s
 ## 🤝 Contributions
 
 Contributions, issues, and feature requests are welcome! 
+
+# Business plan 👔
+
+## Executive Summary:
+
+Project aims to develop a research assistant using Google Vertex AI Palm2 platform.
+Streamlines searching and accessing academic papers from Google Scholar.
+Provides comprehensive dataframe of scraped papers and downloadable PDFs.
+Integration with Google Vertex AI and Langchain enhances capabilities.
+## Problem:
+
+Researchers face challenges in manual searches, limited access to papers, and organizing information.
+Existing methods lack sophistication and efficiency, hindering productivity.
+## Solution:
+
+User-friendly interface for inputting search specifications and navigating Google Scholar.
+Automatic scraping and organization of relevant papers.
+Creates comprehensive dataframe and offers downloadable PDFs.
+Integration with Google Vertex AI and Langchain enables knowledge extraction.
+## Market Size:
+
+Global academic publishing market projected to reach $32.2 billion by 2026.
+Millions of researchers and scholars worldwide as target audience.
+Demand for efficient literature research tools is high.
+## Revenue Stream:
+
+Subscription-based model with advanced features for researchers.
+Licensing opportunities for institutional use.
+##  Next Steps/Backlogs:
+
+Refine user interface and optimize search algorithms.
+Expand integration with additional AI models for knowledge extraction.
+Develop mobile versions for the research assistant.
