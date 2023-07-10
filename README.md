@@ -22,11 +22,21 @@ To set up the project, follow these steps:
 ## 📦 Project Structure
 
 The project is structured as follows:
-
-- `app.py`: This is the main application file where the Streamlit application is run.
-- `scraper.py`: This file contains the code for scraping Google Scholar.
-- `vertex_ai.py`: This file contains the code for integrating with Google Vertex AI.
-- `langchain.py`: This file contains the code for integrating with Langchain.
+```bash
+├── credentials.py
+├── main.py
+├── pages/
+│   ├── vertex_agent.py
+│   ├── vertex_langchain.py
+│   └── vertex_researcher.py
+├── papers/
+│   └── paper_name.pdf
+├── participant-sa-xx-ghc-xxx.json
+├── requirements.txt
+├── README.md
+└── searches/
+    └── scholar_results_yyyy-mm-dd_hh-mm-ss.csv
+````
 
 ## 🗄️ Data
 
@@ -35,7 +45,7 @@ The data used in this project is scraped from Google Scholar based on the user's
 ## 📚 References
 
 - [Google Vertex AI](https://cloud.google.com/vertex-ai)
-- [Langchain](https://www.langchain.ai/)
+- [Langchain](https://python.langchain.com/docs/get_started/introduction.html)
 - [Streamlit](https://streamlit.io/)
 
 ## 🏆 Conclusion
@@ -44,24 +54,4 @@ This project provides a powerful tool for researchers, enabling them to easily s
 
 ## 🤝 Contributions
 
-Contributions, issues, and feature requests are welcome! Feel free to check the [issues page](https://github.com/your_username/your_project/issues). Please adhere to this project's [code of conduct](https://github.com/your_username/your_project/blob/main/CODE_OF_CONDUCT.md).├── credentials.py
-├── main.py
-├── pages/
-│   ├── vertex_agent.py
-│   ├── vertex_langchain.py
-│   └── vertex_researcher.py
-├── papers/
-│   └── scholar_results_2023-07-10_13-31-49.csv
-├── participant-sa-15-ghc-016.json
-├── requirements.txt
-└── searches/
-    ├── scholar_results_2023-07-10_13-32-56.csv
-    ├── scholar_results_2023-07-10_13-36-46.csv
-    ├── scholar_results_2023-07-10_13-42-39.csv
-    ├── scholar_results_2023-07-10_13-55-26.csv
-    ├── scholar_results_2023-07-10_13-56-53.csv
-    ├── scholar_results_2023-07-10_13-57-23.csv
-    ├── scholar_results_2023-07-10_13-57-42.csv
-    ├── scholar_results_2023-07-10_14-02-56.csv
-    ├── scholar_results_2023-07-10_14-04-21.csv
-    └── scholar_results_2023-07-10_14-06-00.csv
+Contributions, issues, and feature requests are welcome! 
