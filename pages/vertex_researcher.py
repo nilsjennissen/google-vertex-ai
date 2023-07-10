@@ -21,16 +21,15 @@ from langchain.vectorstores import FAISS
 from langchain.document_loaders import TextLoader
 from main import rec_streamlit, speak_answer, get_transcript_whisper
 import time
-import en_core_web_sm
 import spacy_streamlit
 from langchain.embeddings.openai import OpenAIEmbeddings
 from langchain.chains import RetrievalQA
 from pptx import Presentation
 from pptx.util import Inches
 from serpapi import GoogleSearch
-from credentials import serp_api_key
+
+
 from langchain.llms import OpenAI
-import pandas as pd
 from serpapi import GoogleSearch
 from urllib.parse import urlsplit, parse_qsl
 

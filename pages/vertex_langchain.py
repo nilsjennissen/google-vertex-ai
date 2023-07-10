@@ -4,8 +4,6 @@ This is the file for the Vertex AI Agent
 
 #%% ---------------------------------------------  IMPORTS  ----------------------------------------------------------#
 import streamlit as st
-import nbformat
-import openai
 from credentials import OPENAI_API_KEY
 from vertexai.preview.language_models import TextGenerationModel
 import tempfile
